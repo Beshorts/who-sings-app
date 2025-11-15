@@ -1,4 +1,4 @@
-# 🎵 Who Sings? 🎵
+## 🎵 Who Sings? 🎵
 
 short description / user journey
 
@@ -18,16 +18,16 @@ link to Netlify
 
 ## 📦 How to run
 
-# clone the repository
+## clone the repository
 git clone https://github.com/Beshorts/who-sings-app.git
 
-# go to the folder
+## go to the folder
 cd who-sings-app
 
-# install dependencies
+## install dependencies
 npm install
 
-# start the App
+## start the App
 npm run dev
 
 ## 📄 License
