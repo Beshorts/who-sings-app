@@ -1,14 +1,32 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './routes/AuthRoute'; 
+import { usePlayer } from './hooks/playerHooks';
+import LoginPage from './pages/LoginPage';
+import GamePage from './pages/GamePage';
+import NotFoundPage from './pages/NotFoundPage';
 
-function App() {
-
+export default function App() {
+  const { currentPlayer } = usePlayer()
+  const isLoggedIn = currentPlayer?.name ? true : false
 
   return (
-    <>
-    <div className="min-h-screen bg-secondary font-sans">
-      <p className='text-5xl font-medium text-primary'>Who Sings?</p>
-    </div>
-    </>
-  )
+   <BrowserRouter>
+      <Routes>
+        {/* public route */}
+        <Route path="/" element={<LoginPage />} />
+        {/* protected route */}
+        <Route element={<ProtectedRoute isAuth={isLoggedIn} redirectPath="/" />}>
+            <Route path="/game" element={<GamePage />} />
+        </Route>
+        {/* 3. NOT FOUND route */}
+        <Route path="*" element={
+            // if user is not logged redirect to login page
+            // if url not exist show 404 not found
+            !isLoggedIn 
+              ? <ProtectedRoute isAuth={false} redirectPath="/" /> 
+              : <NotFoundPage />
+        } />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
