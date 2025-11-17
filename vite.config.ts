@@ -3,6 +3,19 @@ import react from '@vitejs/plugin-react'
 
 
 // https://vite.dev/config/
+
+/**
+ * ADD PROXY FOR NETLIFY FUNCTIONS
+ * FOR DEVELOPMENT PURPOSES
+ */
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/.netlify/functions': {
+        target: 'http://localhost:8888',
+        changeOrigin: true,
+      },
+    },
+  },
 })

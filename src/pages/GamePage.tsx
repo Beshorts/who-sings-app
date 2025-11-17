@@ -1,10 +1,25 @@
 import { useNavigate } from "react-router";
 import { GameHeader } from "../components/GameHeader";
 import { usePlayer } from "../hooks/playerHooks";
+import { musixmatchAPI } from "../services/API";
 
 export default function GamePage() {
   const { currentPlayer, } = usePlayer();
   const navigate = useNavigate();
+
+  // testing for deploy
+   const testAPI = async () => {
+    console.log('🚀 Testing API...');
+    try {
+      const data = await musixmatchAPI.getChartTracks('IT');
+      console.log('✅ Tracks ricevute:', data.message.body.track_list.length);
+      console.log('Prima track:', data.message.body.track_list[0].track);
+      console.log('Full response:', data);
+    } catch (error) {
+      console.log( error);
+    }
+  };
+
 
   // if any player is logged back to Login Page
   if (!currentPlayer) {
@@ -21,6 +36,7 @@ export default function GamePage() {
             Game description coming soon!
           </h2>
           <p className="text-gray-600">🎮</p>
+          <button className="cursor-pointer" onClick={testAPI}>call me</button>
         </div>
       </main>
     </div>

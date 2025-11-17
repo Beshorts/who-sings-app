@@ -8,7 +8,7 @@ function PlayerProvider({ children }: { children: ReactNode }) {
 
   const [state, dispatch] = useReducer(playerReducer, initialPlayerState, (initial) => {
 
-    const currentPlayer = localStorage.getItem('currentPlayer');
+    const currentPlayer = sessionStorage.getItem('currentPlayer');
 
     if (currentPlayer) {
       try {
@@ -27,13 +27,13 @@ function PlayerProvider({ children }: { children: ReactNode }) {
       createdAt: Date.now(),
     };
 
-    localStorage.setItem('currentPlayer', JSON.stringify(player));
+    sessionStorage.setItem('currentPlayer', JSON.stringify(player));
     dispatch({ type: 'LOGIN', payload: name });
   };
 
   const logout = () => {
     
-    localStorage.removeItem('currentPlayer');
+    sessionStorage.removeItem('currentPlayer');
     dispatch({ type: 'LOGOUT' });
   };
 
