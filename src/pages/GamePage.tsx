@@ -16,8 +16,16 @@ export default function GamePage() {
       console.log('Prima track:', data.message.body.track_list[0].track);
       console.log('Full response:', data);
     } catch (error) {
-      console.log( error);
+      console.log("Errore chart tracks:", error);
     }
+
+     try {
+    // Aggiungi await qui per ottenere il risultato reale
+    const lyricsData = await musixmatchAPI.getTrackLyrics(undefined, 87318877);
+    console.log("Lyrics ricevuti:", lyricsData);
+  } catch (error) {
+    console.log("Errore lyrics:", error);
+  }
   };
 
 
