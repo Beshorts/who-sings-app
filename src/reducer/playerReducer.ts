@@ -4,6 +4,8 @@ export const initialPlayerState: PlayerState = {
   currentPlayer: null,
 };
 
+// reducer to manage Player's auth states
+
 export function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
   switch (action.type) {
     case 'LOGIN':

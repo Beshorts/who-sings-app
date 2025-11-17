@@ -2,7 +2,7 @@ import { use } from 'react';
 import { PlayerContext } from '../context/playerContext';
 
 
-// encapsuled context to track if it is used 
+// encapsuled context to track if it is used within provider or not
 export function usePlayer() {
   const context = use(PlayerContext);
   

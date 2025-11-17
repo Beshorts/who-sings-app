@@ -25,8 +25,13 @@ cd who-sings-app
 ### install dependencies
 npm install
 
-### start the App
+### start the App on localhost 5174
 npm run dev
+### start Netlify Functions on localhost 8888
+netlify dev
+
+#### in case install
+npm install -g netlify-cli
 
 ### 📄 License
 MIT
