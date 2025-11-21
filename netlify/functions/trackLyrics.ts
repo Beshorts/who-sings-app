@@ -37,13 +37,14 @@ function isTrackLyricsResponse(raw: unknown): raw is TrackLyricsResponse {
  *
  * Query Parameters:
  * if it exists, use track_isrc over commontrack_id as recommended by Musixmatch API documentation
- * - @params track_isrc (string, optional): the ISRC code of the track.
- * - @params commontrack_id (number, optional): the commontrack ID of the track.
+ * - @params track_isrc (string): the ISRC code of the track, sometime it could undefined.
+ * - @params commontrack_id (number): the commontrack ID of the track.
  * Notes: those params are provided by game logic
  *
  * Returns:
  * - JSON with track lyrics.
- * - Returns HTTP 500 if the Musixmatch API returns an error.
+ * - Returns HTTP 502 if the Musixmatch API returns an error.
+ * - Returns HTTP 500 if internal error
  */
 
 // Add a small ambient declaration for process.env at the top 
@@ -65,7 +66,7 @@ export const handler: Handler = async (event) => {
     if (!trackIsrc && !commontrackId) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Devi fornire track_isrc se esiste o in alternativa commontrack_id' })
+        body: JSON.stringify({ error: 'Devi fornire track_isrc se esiste e anche commontrack_id' })
       };
     }
 

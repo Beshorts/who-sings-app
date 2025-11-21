@@ -4,7 +4,7 @@ short description / user journey
 
 ## 🚀 Demo
 
-link to Netlify
+Try the live demo on [Netlify](https://guess-who-sings.netlify.app/)
 
 ## 🛠️ Tech Stack
 

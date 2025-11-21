@@ -8,12 +8,6 @@ export interface Track {
   has_lyrics: number;
 }
 
-export interface Lyric {
-  lyrics_id: number;
-  lyrics_body: string;
-  script_tracking_url: string;
-}
-
 export interface ChartTracksResponse {
   message: {
     body: {
@@ -26,6 +20,14 @@ export interface ChartTracksResponse {
       execute_time: number;
     };
   };
+}
+// API raw response
+export interface Lyric {
+  lyrics_id: number;
+  lyrics_body: string;
+  // for lyrics views tracking purpose 
+  pixel_tracking_url: string;
+  lyrics_copyright: string;
 }
 
 export interface TrackLyricsResponse {

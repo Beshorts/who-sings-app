@@ -1,6 +1,9 @@
+import type { QuizRound } from "./quiz.types";
+
 // entity
 export interface Player {
     name: string;
+    rounds_won: QuizRound[]
     createdAt: number
 }
 
@@ -9,7 +12,7 @@ export interface PlayerState {
   currentPlayer: Player | null;
 }
 
-//reducer actions (type + payload)
+// reducer actions (type + payload)
 export type PlayerAction =
   | { type: 'LOGIN'; payload: string }
   | { type: 'LOGOUT' };

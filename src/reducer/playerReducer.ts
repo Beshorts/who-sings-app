@@ -12,6 +12,7 @@ export function playerReducer(state: PlayerState, action: PlayerAction): PlayerS
       return {
         currentPlayer: {
           name: action.payload.trim(),
+          rounds_won: action.payload.trim() ? [] : [],
           createdAt: Date.now(),
         },
       };

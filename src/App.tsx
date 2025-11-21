@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './routes/AuthRoute'; 
-import { usePlayer } from './hooks/playerHooks';
+import { usePlayerContext } from './hooks/playerHooks';
 import LoginPage from './pages/LoginPage';
 import GamePage from './pages/GamePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
-  const { currentPlayer } = usePlayer()
+  const { currentPlayer } = usePlayerContext()
   const isLoggedIn = currentPlayer?.name ? true : false
 
   return (

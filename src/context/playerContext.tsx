@@ -33,7 +33,7 @@ function PlayerProvider({ children }: { children: ReactNode }) {
 
   const logout = () => {
     
-    sessionStorage.removeItem('currentPlayer');
+    sessionStorage.clear()
     dispatch({ type: 'LOGOUT' });
   };
 

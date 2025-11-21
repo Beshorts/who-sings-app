@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { usePlayer } from "../hooks/playerHooks";
+import { usePlayerContext } from "../hooks/playerHooks";
 
 export default function LoginForm() {
 
     const [name,setName] = useState('')
 
-  const { login } = usePlayer();
+  const { login } = usePlayerContext();
 
   const navigate = useNavigate();
 

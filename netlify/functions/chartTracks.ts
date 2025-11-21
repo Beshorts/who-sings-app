@@ -45,7 +45,8 @@ function isChartTracksResponse(raw: unknown): raw is ChartTracksResponse {
  * 
  * Returns:
  * - JSON containing the list of tracks with the most viewed lyrics in the last 7 days.
- * - Returns HTTP 500 if the Musixmatch API returns an error.
+ * - Returns HTTP 502 if the Musixmatch API returns an error.
+ * - Returns HTTP 500 if internal error
  */
 
 // small ambient declaration for process.env at the top
@@ -59,13 +60,11 @@ if (!API_KEY) {
   throw new Error('MUSIXMATCH_KEY non trovata');
 }
 
-export const handler: Handler = async (event) => {
+export const handler: Handler = async () => {
   try {
-    const country = event.queryStringParameters?.country || 'IT';
-
     const params = new URLSearchParams({
       apikey: API_KEY,
-      country, //value from user input
+      country: 'IT',
       chart_name: 'mxmweekly',
       f_has_lyrics: '1',
       page: '1',
